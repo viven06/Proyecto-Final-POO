@@ -12,7 +12,7 @@ public class Main_Class {
        Hotel hotel=new Hotel();
        int diasp,hsencilla,hdoble,hsuite,codigo;
        String fechaAl;
-       /*
+       
        System.out.println("Bienvenido a Crear Nuevo Grupo");
        System.out.println("Ingrese la fecha de alojamiento: ");
        fechaAl=in.nextLine();
@@ -65,7 +65,7 @@ public class Main_Class {
        for(Object h:g1.getHuespedes()){
            Huesped hu=(Huesped)h;
            hu.mostrarHuesped(); 
-       }*/
+       }
     hotel.mostrarHabitaciones();
     }
     
