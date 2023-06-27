@@ -1,4 +1,0 @@
-3;1;2;3;52 reer;3123124
-dani;rueda;2321424;Tarjeta de Identidad;2142312;20;Masculino;Colombia;gijon
-luz;barrera;319373829;Cedula de Ciudadanía;929124020;50;Femenino;Colombia;giron
-
