@@ -1,5 +1,5 @@
 
-package Main_Package;
+package Logica;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -33,8 +33,18 @@ public class Grupo {
         vHuespedes.add(new Huesped(n,a,tf,tdo,ndo,edad,genero,nac,ciures));
     }
     
+    public void mostrarHuespedes(){
+        for(Huesped h:vHuespedes){
+            h.mostrarHuesped();
+        }
+    }
+    
     public ArrayList getHuespedes(){
         return vHuespedes;
+    }
+    
+    public String toString(){
+        return dias_permanencia+";"+hSencilla+";"+hDoble+";"+hSuite+";"+fechaAlojamiento+";"+codigo;
     }
     
     

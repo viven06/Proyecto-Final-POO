@@ -1,5 +1,5 @@
 
-package Main_Package;
+package Logica;
 
 
 public class Huesped {
@@ -36,5 +36,10 @@ public class Huesped {
         System.out.println("Genero: "+genero);
         System.out.println("Nacionalidad: "+nacionalidad);
         System.out.println("Ciudad de Residencia: "+ciudadResidencia);
+    }
+    
+    @Override
+    public String toString(){
+        return nombre+";"+apellido+";"+telefono+";"+tipoDocu+";"+numeroDocu+";"+edad+";"+genero+";"+nacionalidad+";"+ciudadResidencia;
     }
 }

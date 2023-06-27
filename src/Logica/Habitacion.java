@@ -1,5 +1,5 @@
 
-package Main_Package;
+package Logica;
 
 
 public class Habitacion {

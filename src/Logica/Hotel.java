@@ -1,5 +1,5 @@
 
-package Main_Package;
+package Logica;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
