@@ -6,10 +6,12 @@ import Persistencia.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Color;
+import java.util.*;
 
 public class VentanaRegistrarHabitacion extends javax.swing.JFrame {
     private Hotel hotel;
     private Ventana ventanamain;
+    
     
     public VentanaRegistrarHabitacion(Ventana ventana) {
         initComponents();
@@ -297,6 +299,16 @@ public class VentanaRegistrarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarGrupoActionPerformed
 
     private void btnGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarHabitacionActionPerformed
+        int contiene=0;
+        for(Grupo g:hotel.getGrupos()){
+            if(Integer.parseInt(ftxtCodigoReserva.getText())==g.getCodigo()){
+                contiene=1;
+            }
+        }
+        if(contiene==0){
+            JOptionPane.showMessageDialog(this, "El grupo ingresado no existe en los registros","ERROR",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         hotel.getHabitaciones().put(Integer.parseInt(lblNumH.getText()),new Habitacion("Ocupado",Integer.parseInt(ftxtCodigoReserva.getText()),lblTipoH.getText()));
         Habitacion ha=(Habitacion)hotel.getHabitaciones().get(Integer.parseInt(lblNumH.getText()));
         btnVaciarHabitacion.setVisible(true);

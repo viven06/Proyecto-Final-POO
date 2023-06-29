@@ -6,6 +6,8 @@ import Persistencia.*;
 import java.util.Map;
 import javax.swing.*;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Ventana extends javax.swing.JFrame {
     private Grupo grupo;
@@ -14,6 +16,8 @@ public class Ventana extends javax.swing.JFrame {
     private ArrayList<JButton> botonesH;
     private ArrayList<JPanel> panelesH;
     private DefaultListModel<String> modelo;
+    private int codigoprovisional;
+    
     
    
     
@@ -24,6 +28,7 @@ public class Ventana extends javax.swing.JFrame {
         this.setTitle("Software Recepcion Hotel");
         ventanahabitacion=new VentanaRegistrarHabitacion(this);
         hotel=ventanahabitacion.getHotel();
+        codigoprovisional=000001;
         panelesH=new ArrayList<JPanel>();
         panelesH.add(pnlH101);panelesH.add(pnlH102);panelesH.add(pnlH103);panelesH.add(pnlH104);panelesH.add(pnlH105);
         panelesH.add(pnlH106);panelesH.add(pnlH107);panelesH.add(pnlH108);panelesH.add(pnlH109);panelesH.add(pnlH110);
@@ -54,7 +59,6 @@ public class Ventana extends javax.swing.JFrame {
         pnlRegistrar = new javax.swing.JPanel();
         lblFechaAlojamiento = new javax.swing.JLabel();
         btnNuevoGrupo = new javax.swing.JButton();
-        txtFechaAlojamiento = new javax.swing.JTextField();
         lblDiasPermanencia = new javax.swing.JLabel();
         lblCantidadSencillas = new javax.swing.JLabel();
         lblCantidadDobles = new javax.swing.JLabel();
@@ -93,6 +97,7 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstListaGrupos = new javax.swing.JList<>();
         lblLista = new javax.swing.JLabel();
+        ftxtFechaAlojamiento = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlHabitaciones = new javax.swing.JPanel();
         pnlTopAzul2 = new javax.swing.JPanel();
@@ -403,6 +408,8 @@ public class Ventana extends javax.swing.JFrame {
         lblLista.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLista.setText("Lista de Grupos/Reservas");
 
+        ftxtFechaAlojamiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
         javax.swing.GroupLayout pnlRegistrarLayout = new javax.swing.GroupLayout(pnlRegistrar);
         pnlRegistrar.setLayout(pnlRegistrarLayout);
         pnlRegistrarLayout.setHorizontalGroup(
@@ -433,15 +440,17 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(lblFechaAlojamiento)
                                     .addComponent(lblDiasPermanencia))
                                 .addGap(129, 129, 129)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(ftxtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNuevoGrupo)
                             .addComponent(btnGuardarGrupo)
-                            .addComponent(lblLista)))
+                            .addComponent(lblLista)
+                            .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                                .addComponent(btnNuevoGrupo)
+                                .addGap(129, 129, 129))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrarLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -495,88 +504,86 @@ public class Ventana extends javax.swing.JFrame {
                             .addComponent(btnNuevoHuesped)
                             .addComponent(btnNuevoGrupo))
                         .addGap(18, 18, 18)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombre)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblApellido))
+                        .addGap(13, 13, 13)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ftxtTelefono))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTipoDocu)
+                            .addComponent(cmbTipoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNoDocu)
+                            .addComponent(ftxtNoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEdad)
+                            .addComponent(spnEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblGenero, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblNombre)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblApellido))
-                                .addGap(13, 13, 13)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ftxtTelefono))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblTipoDocu)
-                                    .addComponent(cmbTipoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblNoDocu)
-                                    .addComponent(ftxtNoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEdad)
-                                    .addComponent(spnEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblGenero, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spnNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                        .addComponent(lblNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(1, 1, 1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCiudadRes)
-                                    .addComponent(txtCiudadRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnGuardarHuesped)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnFinalizarRegistro)
-                                .addContainerGap(402, Short.MAX_VALUE))
-                            .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblFechaAlojamiento)
-                                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCantidadSencillas)
-                                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCantidadSuites)
-                                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCodigoReserva)
-                                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnGuardarGrupo)
-                                .addGap(29, 29, 29)
-                                .addComponent(lblLista)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(325, 325, 325))))
+                                .addComponent(lblNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCiudadRes)
+                            .addComponent(txtCiudadRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGuardarHuesped)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFinalizarRegistro)
+                        .addContainerGap(402, Short.MAX_VALUE))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblFechaAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ftxtFechaAlojamiento))
+                        .addGap(17, 17, 17)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCantidadSencillas)
+                            .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCantidadSuites)
+                            .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCodigoReserva)
+                            .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGuardarGrupo)
+                        .addGap(29, 29, 29)
+                        .addComponent(lblLista)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(325, 325, 325))))
         );
 
         lblFechaAlojamiento.setVisible(false);
-        txtFechaAlojamiento.setVisible(false);
         lblDiasPermanencia.setVisible(false);
         lblCantidadSencillas.setVisible(false);
         lblCantidadDobles.setVisible(false);
@@ -609,6 +616,7 @@ public class Ventana extends javax.swing.JFrame {
         txtCiudadRes.setVisible(false);
         btnGuardarHuesped.setVisible(false);
         btnFinalizarRegistro.setVisible(false);
+        ftxtFechaAlojamiento.setVisible(false);
 
         jTabbedPane1.addTab("Registrar Huespedes", pnlRegistrar);
 
@@ -2249,17 +2257,25 @@ public class Ventana extends javax.swing.JFrame {
     
     
     
+    
     private void btnGuardarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGrupoActionPerformed
         btnNuevoHuesped.setVisible(true);
-        grupo=new Grupo(Integer.parseInt(ftxtDiasPermanencia.getText()),Integer.parseInt(ftxtCantidadSencillas.getText()),Integer.parseInt(ftxtCantidadDobles.getText()),Integer.parseInt(ftxtCantidadSuites.getText()),txtFechaAlojamiento.getText(),Integer.parseInt(ftxtCodigoReserva.getText()));
+        String date=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        if(ftxtFechaAlojamiento.getText().isBlank()){ftxtFechaAlojamiento.setText(date);}
+        if(ftxtDiasPermanencia.getText().isBlank()){ftxtDiasPermanencia.setText("1");}
+        if(ftxtCantidadSencillas.getText().isBlank()){ftxtCantidadSencillas.setText("1");}
+        if(ftxtCantidadDobles.getText().isBlank()){ftxtCantidadDobles.setText("0");}
+        if(ftxtCantidadSuites.getText().isBlank()){ftxtCantidadSuites.setText("0");}
+        if(ftxtCodigoReserva.getText().isBlank()){ftxtCodigoReserva.setText(String.valueOf(codigoprovisional));}
+        codigoprovisional++;
+        grupo=new Grupo(Integer.parseInt(ftxtDiasPermanencia.getText()),Integer.parseInt(ftxtCantidadSencillas.getText()),Integer.parseInt(ftxtCantidadDobles.getText()),Integer.parseInt(ftxtCantidadSuites.getText()),ftxtFechaAlojamiento.getText(),Integer.parseInt(ftxtCodigoReserva.getText()));
         hotel.getGrupos().add(grupo);
-        modelo.addElement(grupo.toStringForList());
-        
+        modelo.addElement(grupo.toStringForList());      
     }//GEN-LAST:event_btnGuardarGrupoActionPerformed
 
     private void btnNuevoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoGrupoActionPerformed
         lblFechaAlojamiento.setVisible(true);
-        txtFechaAlojamiento.setVisible(true);
+        ftxtFechaAlojamiento.setVisible(true);
         lblDiasPermanencia.setVisible(true);
         ftxtDiasPermanencia.setVisible(true);
         lblCantidadSencillas.setVisible(true);
@@ -2272,7 +2288,7 @@ public class Ventana extends javax.swing.JFrame {
         ftxtCodigoReserva.setVisible(true);
         btnGuardarGrupo.setVisible(true);
         sptSeparador.setVisible(true);
-        txtFechaAlojamiento.setText("");
+        ftxtFechaAlojamiento.setText("");
         ftxtDiasPermanencia.setText("");
         ftxtCantidadSencillas.setText("");
         ftxtCantidadDobles.setText("");
@@ -2317,12 +2333,17 @@ public class Ventana extends javax.swing.JFrame {
         String genero=(String)cmbGenero.getSelectedItem();
         int edad=(Integer)spnEdad.getValue();
         String nacionalidad=(String)spnNacionalidad.getValue();
+        if(txtNombre.getText().isBlank()){txtNombre.setText("NOMBRE");}
+        if(txtApellido.getText().isBlank()){txtApellido.setText("APELLIDOS");}
+        if(ftxtTelefono.getText().isBlank()){ftxtTelefono.setText("3000000000");}
+        if(ftxtNoDocu.getText().isBlank()){ftxtNoDocu.setText("0000000000");}
+        if(txtCiudadRes.getText().isBlank()){txtCiudadRes.setText("CIUDAD RES");}
         grupo.agregarHuesped(txtNombre.getText(),txtApellido.getText(),ftxtTelefono.getText(),tipoDocu,ftxtNoDocu.getText(),edad,genero,nacionalidad,txtCiudadRes.getText());
     }//GEN-LAST:event_btnGuardarHuespedActionPerformed
 
     private void btnFinalizarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarRegistroActionPerformed
         lblFechaAlojamiento.setVisible(false);
-        txtFechaAlojamiento.setVisible(false);
+        ftxtFechaAlojamiento.setVisible(false);
         lblDiasPermanencia.setVisible(false);
         lblCantidadSencillas.setVisible(false);
         lblCantidadDobles.setVisible(false);
@@ -3149,6 +3170,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtCantidadSuites;
     private javax.swing.JFormattedTextField ftxtCodigoReserva;
     private javax.swing.JFormattedTextField ftxtDiasPermanencia;
+    private javax.swing.JFormattedTextField ftxtFechaAlojamiento;
     private javax.swing.JFormattedTextField ftxtNoDocu;
     private javax.swing.JFormattedTextField ftxtTelefono;
     private javax.swing.JLabel jLabel1;
@@ -3272,7 +3294,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JSeparator sptSeparador;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCiudadRes;
-    private javax.swing.JTextField txtFechaAlojamiento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
