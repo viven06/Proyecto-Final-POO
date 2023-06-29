@@ -43,9 +43,16 @@ public class Grupo {
         return vHuespedes;
     }
     
+    public int getCodigo(){
+        return codigo;
+    }
+    
     public String toString(){
         return dias_permanencia+";"+hSencilla+";"+hDoble+";"+hSuite+";"+fechaAlojamiento+";"+codigo;
     }
     
-    
+    public String toStringForList(){
+        return "Reserva: "+codigo;
+    }
+      
 }

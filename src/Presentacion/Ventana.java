@@ -3,15 +3,42 @@ package Presentacion;
 
 import Logica.*;
 import Persistencia.*;
+import java.util.Map;
+import javax.swing.*;
+import java.util.*;
 
 public class Ventana extends javax.swing.JFrame {
     private Grupo grupo;
+    private Hotel hotel;
+    private VentanaRegistrarHabitacion ventanahabitacion;
+    private ArrayList<JButton> botonesH;
+    private ArrayList<JPanel> panelesH;
+    private DefaultListModel<String> modelo;
+    
    
     
     public Ventana() {
+        modelo=new DefaultListModel<String>();
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setTitle("Software Recepcion Hotel");
+        ventanahabitacion=new VentanaRegistrarHabitacion(this);
+        hotel=ventanahabitacion.getHotel();
+        panelesH=new ArrayList<JPanel>();
+        panelesH.add(pnlH101);panelesH.add(pnlH102);panelesH.add(pnlH103);panelesH.add(pnlH104);panelesH.add(pnlH105);
+        panelesH.add(pnlH106);panelesH.add(pnlH107);panelesH.add(pnlH108);panelesH.add(pnlH109);panelesH.add(pnlH110);
+        panelesH.add(pnlH201);panelesH.add(pnlH202);panelesH.add(pnlH203);panelesH.add(pnlH204);panelesH.add(pnlH205);
+        panelesH.add(pnlH206);panelesH.add(pnlH207);panelesH.add(pnlH208);panelesH.add(pnlH209);panelesH.add(pnlH210);
+        panelesH.add(pnlH301);panelesH.add(pnlH302);panelesH.add(pnlH303);panelesH.add(pnlH304);panelesH.add(pnlH305);
+        panelesH.add(pnlH306);panelesH.add(pnlH307);panelesH.add(pnlH308);panelesH.add(pnlH309);panelesH.add(pnlH310);
+        
+        botonesH=new ArrayList<JButton>();
+        botonesH.add(btnH101);botonesH.add(btnH102);botonesH.add(btnH103);botonesH.add(btnH104);botonesH.add(btnH105);
+        botonesH.add(btnH106);botonesH.add(btnH107);botonesH.add(btnH108);botonesH.add(btnH109);botonesH.add(btnH110);
+        botonesH.add(btnH201);botonesH.add(btnH202);botonesH.add(btnH203);botonesH.add(btnH204);botonesH.add(btnH205);
+        botonesH.add(btnH206);botonesH.add(btnH207);botonesH.add(btnH208);botonesH.add(btnH209);botonesH.add(btnH210);
+        botonesH.add(btnH301);botonesH.add(btnH302);botonesH.add(btnH303);botonesH.add(btnH304);botonesH.add(btnH305);
+        botonesH.add(btnH306);botonesH.add(btnH307);botonesH.add(btnH308);botonesH.add(btnH309);botonesH.add(btnH310);
     }
 
     /**
@@ -39,7 +66,6 @@ public class Ventana extends javax.swing.JFrame {
         ftxtDiasPermanencia = new javax.swing.JFormattedTextField();
         ftxtCantidadSuites = new javax.swing.JFormattedTextField();
         ftxtCodigoReserva = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
         btnNuevoHuesped = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
@@ -62,11 +88,138 @@ public class Ventana extends javax.swing.JFrame {
         btnGuardarHuesped = new javax.swing.JButton();
         btnFinalizarRegistro = new javax.swing.JButton();
         sptSeparador = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstListaGrupos = new javax.swing.JList<>();
+        lblLista = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         pnlHabitaciones = new javax.swing.JPanel();
+        pnlTopAzul2 = new javax.swing.JPanel();
+        lblHabitaciones = new javax.swing.JLabel();
+        pnlH101 = new javax.swing.JPanel();
+        lblH101 = new javax.swing.JLabel();
+        lblTipoH101 = new javax.swing.JLabel();
+        btnH101 = new javax.swing.JButton();
+        pnlH102 = new javax.swing.JPanel();
+        lblH102 = new javax.swing.JLabel();
+        lblTipoH102 = new javax.swing.JLabel();
+        btnH102 = new javax.swing.JButton();
+        pnlH103 = new javax.swing.JPanel();
+        lblH103 = new javax.swing.JLabel();
+        lblTipoH103 = new javax.swing.JLabel();
+        btnH103 = new javax.swing.JButton();
+        pnlH104 = new javax.swing.JPanel();
+        lblH104 = new javax.swing.JLabel();
+        lblTipoH104 = new javax.swing.JLabel();
+        btnH104 = new javax.swing.JButton();
+        pnlH105 = new javax.swing.JPanel();
+        lblH105 = new javax.swing.JLabel();
+        lblTipoH105 = new javax.swing.JLabel();
+        btnH105 = new javax.swing.JButton();
+        pnlH106 = new javax.swing.JPanel();
+        lblH106 = new javax.swing.JLabel();
+        lblTipoH106 = new javax.swing.JLabel();
+        btnH106 = new javax.swing.JButton();
+        pnlH107 = new javax.swing.JPanel();
+        btnH107 = new javax.swing.JButton();
+        lblH107 = new javax.swing.JLabel();
+        lblTipoH107 = new javax.swing.JLabel();
+        pnlH203 = new javax.swing.JPanel();
+        btnH203 = new javax.swing.JButton();
+        lblH203 = new javax.swing.JLabel();
+        lblTipoH203 = new javax.swing.JLabel();
+        pnlH209 = new javax.swing.JPanel();
+        btnH209 = new javax.swing.JButton();
+        lblH209 = new javax.swing.JLabel();
+        lblTipoH209 = new javax.swing.JLabel();
+        pnlH108 = new javax.swing.JPanel();
+        btnH108 = new javax.swing.JButton();
+        lblH108 = new javax.swing.JLabel();
+        lblTipoH108 = new javax.swing.JLabel();
+        pnlH109 = new javax.swing.JPanel();
+        btnH109 = new javax.swing.JButton();
+        lblH109 = new javax.swing.JLabel();
+        lblTipoH109 = new javax.swing.JLabel();
+        pnlH110 = new javax.swing.JPanel();
+        btnH110 = new javax.swing.JButton();
+        lblH110 = new javax.swing.JLabel();
+        lblTipoH110 = new javax.swing.JLabel();
+        pnlH201 = new javax.swing.JPanel();
+        btnH201 = new javax.swing.JButton();
+        lblH201 = new javax.swing.JLabel();
+        lblTipoH201 = new javax.swing.JLabel();
+        pnlH204 = new javax.swing.JPanel();
+        btnH204 = new javax.swing.JButton();
+        lblH204 = new javax.swing.JLabel();
+        lblTipoH204 = new javax.swing.JLabel();
+        pnlH202 = new javax.swing.JPanel();
+        btnH202 = new javax.swing.JButton();
+        lblH202 = new javax.swing.JLabel();
+        lblTipoH202 = new javax.swing.JLabel();
+        pnlH205 = new javax.swing.JPanel();
+        btnH205 = new javax.swing.JButton();
+        lblH205 = new javax.swing.JLabel();
+        lblTipoH205 = new javax.swing.JLabel();
+        pnlH206 = new javax.swing.JPanel();
+        btnH206 = new javax.swing.JButton();
+        lblH206 = new javax.swing.JLabel();
+        lblTipoH206 = new javax.swing.JLabel();
+        pnlH207 = new javax.swing.JPanel();
+        btnH207 = new javax.swing.JButton();
+        lblH207 = new javax.swing.JLabel();
+        lblTipoH207 = new javax.swing.JLabel();
+        pnlH208 = new javax.swing.JPanel();
+        btnH208 = new javax.swing.JButton();
+        lblH208 = new javax.swing.JLabel();
+        lblTipoH208 = new javax.swing.JLabel();
+        pnlH210 = new javax.swing.JPanel();
+        btnH210 = new javax.swing.JButton();
+        lblH210 = new javax.swing.JLabel();
+        lblTipoH210 = new javax.swing.JLabel();
+        pnlH301 = new javax.swing.JPanel();
+        btnH301 = new javax.swing.JButton();
+        lblH301 = new javax.swing.JLabel();
+        lblTipoH301 = new javax.swing.JLabel();
+        pnlH302 = new javax.swing.JPanel();
+        btnH302 = new javax.swing.JButton();
+        lblH302 = new javax.swing.JLabel();
+        lblTipoH302 = new javax.swing.JLabel();
+        pnlH303 = new javax.swing.JPanel();
+        btnH303 = new javax.swing.JButton();
+        lblH303 = new javax.swing.JLabel();
+        lblTipoH303 = new javax.swing.JLabel();
+        pnlH304 = new javax.swing.JPanel();
+        btnH304 = new javax.swing.JButton();
+        lblH304 = new javax.swing.JLabel();
+        lblTipoH304 = new javax.swing.JLabel();
+        pnlH305 = new javax.swing.JPanel();
+        btnH305 = new javax.swing.JButton();
+        lblH305 = new javax.swing.JLabel();
+        lblTipoH305 = new javax.swing.JLabel();
+        pnlH306 = new javax.swing.JPanel();
+        btnH306 = new javax.swing.JButton();
+        lblH306 = new javax.swing.JLabel();
+        lblTipoH306 = new javax.swing.JLabel();
+        pnlH308 = new javax.swing.JPanel();
+        btnH308 = new javax.swing.JButton();
+        lblH308 = new javax.swing.JLabel();
+        lblTipoH308 = new javax.swing.JLabel();
+        pnlH307 = new javax.swing.JPanel();
+        btnH307 = new javax.swing.JButton();
+        lblH307 = new javax.swing.JLabel();
+        lblTipoH307 = new javax.swing.JLabel();
+        pnlH309 = new javax.swing.JPanel();
+        btnH309 = new javax.swing.JButton();
+        lblH309 = new javax.swing.JLabel();
+        lblTipoH309 = new javax.swing.JLabel();
+        pnlH310 = new javax.swing.JPanel();
+        btnH310 = new javax.swing.JButton();
+        lblH310 = new javax.swing.JLabel();
+        lblTipoH310 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setForeground(new java.awt.Color(204, 204, 204));
@@ -76,13 +229,14 @@ public class Ventana extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
 
         pnlRegistrar.setBackground(new java.awt.Color(255, 255, 255));
-        pnlRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        pnlRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
         lblFechaAlojamiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblFechaAlojamiento.setText("Fecha Alojamiento");
+        lblFechaAlojamiento.setText("Fecha Alojamiento:");
 
         btnNuevoGrupo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnNuevoGrupo.setText("Nuevo Grupo");
+        btnNuevoGrupo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevoGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoGrupoActionPerformed(evt);
@@ -90,22 +244,23 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         lblDiasPermanencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblDiasPermanencia.setText("Dias de Permanencia");
+        lblDiasPermanencia.setText("Dias de Permanencia:");
 
         lblCantidadSencillas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCantidadSencillas.setText("Cantidad Habitaciones Sencillas");
+        lblCantidadSencillas.setText("Cantidad Habitaciones Sencillas:");
 
         lblCantidadDobles.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCantidadDobles.setText("Cantidad Habitaciones Dobles");
+        lblCantidadDobles.setText("Cantidad Habitaciones Dobles:");
 
         lblCantidadSuites.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCantidadSuites.setText("Cantidad Habitaciones Suite");
+        lblCantidadSuites.setText("Cantidad Habitaciones Suite:");
 
         lblCodigoReserva.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCodigoReserva.setText("Codigo de Reserva");
+        lblCodigoReserva.setText("Codigo de Reserva:");
 
         btnGuardarGrupo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardarGrupo.setText("Guardar Datos Grupo");
+        btnGuardarGrupo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardarGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarGrupoActionPerformed(evt);
@@ -114,24 +269,42 @@ public class Ventana extends javax.swing.JFrame {
 
         ftxtCantidadDobles.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadDobles.setMinimumSize(new java.awt.Dimension(64, 26));
+        ftxtCantidadDobles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtCantidadDoblesActionPerformed(evt);
+            }
+        });
 
         ftxtCantidadSencillas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadSencillas.setMinimumSize(new java.awt.Dimension(64, 26));
+        ftxtCantidadSencillas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtCantidadSencillasActionPerformed(evt);
+            }
+        });
 
         ftxtDiasPermanencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtDiasPermanencia.setMinimumSize(new java.awt.Dimension(64, 26));
 
         ftxtCantidadSuites.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadSuites.setMinimumSize(new java.awt.Dimension(64, 26));
+        ftxtCantidadSuites.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtCantidadSuitesActionPerformed(evt);
+            }
+        });
 
         ftxtCodigoReserva.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCodigoReserva.setMinimumSize(new java.awt.Dimension(64, 26));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Registrar Datos");
+        ftxtCodigoReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtCodigoReservaActionPerformed(evt);
+            }
+        });
 
         btnNuevoHuesped.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnNuevoHuesped.setText("Nuevo Huesped");
+        btnNuevoHuesped.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevoHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoHuespedActionPerformed(evt);
@@ -139,46 +312,51 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNombre.setText("Nombre");
+        lblNombre.setText("Nombre:");
 
         lblApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblApellido.setText("Apellido");
+        lblApellido.setText("Apellido:");
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTelefono.setText("Telefono");
+        lblTelefono.setText("Telefono:");
 
         lblTipoDocu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTipoDocu.setText("Tipo de Documento");
+        lblTipoDocu.setText("Tipo de Documento:");
 
         lblNoDocu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNoDocu.setText("Numero de Documento");
+        lblNoDocu.setText("Numero de Documento:");
 
         lblEdad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblEdad.setText("Edad");
+        lblEdad.setText("Edad:");
 
         lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblGenero.setText("Genero");
+        lblGenero.setText("Genero:");
 
         lblNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNacionalidad.setText("Nacionalidad");
+        lblNacionalidad.setText("Nacionalidad:");
 
         lblCiudadRes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCiudadRes.setText("Ciudad de Residencia");
+        lblCiudadRes.setText("Ciudad de Residencia:");
 
         cmbTipoDocu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta de Identidad", "Cedula de Ciudadanía", "Cedula de Extranjería", "Pasaporte" }));
+        cmbTipoDocu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         ftxtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         ftxtNoDocu.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         spnEdad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 120, 1));
+        spnEdad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         cmbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "No Binario", "Otro" }));
+        cmbGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         spnNacionalidad.setModel(new javax.swing.SpinnerListModel(new String[] {"Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"}));
+        spnNacionalidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnGuardarHuesped.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardarHuesped.setText("Guardar Datos Huesped");
+        btnGuardarHuesped.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardarHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarHuespedActionPerformed(evt);
@@ -187,6 +365,7 @@ public class Ventana extends javax.swing.JFrame {
 
         btnFinalizarRegistro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnFinalizarRegistro.setText("Finalizar Registro de Huespedes");
+        btnFinalizarRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFinalizarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarRegistroActionPerformed(evt);
@@ -194,6 +373,35 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         sptSeparador.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Registrar Datos");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18))
+        );
+
+        jScrollPane2.setViewportView(lstListaGrupos);
+        lstListaGrupos.setModel(modelo);
+
+        lblLista.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLista.setText("Lista de Grupos/Reservas");
 
         javax.swing.GroupLayout pnlRegistrarLayout = new javax.swing.GroupLayout(pnlRegistrar);
         pnlRegistrar.setLayout(pnlRegistrarLayout);
@@ -203,39 +411,45 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                    .addComponent(lblFechaAlojamiento)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                    .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCodigoReserva)
-                                        .addComponent(lblCantidadSuites))
-                                    .addGap(71, 71, 71)
-                                    .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                .addComponent(lblDiasPermanencia)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                                        .addComponent(lblCantidadSencillas)
+                                        .addGap(44, 44, 44))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRegistrarLayout.createSequentialGroup()
+                                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblCantidadDobles, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCantidadSuites, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRegistrarLayout.createSequentialGroup()
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFechaAlojamiento)
+                                    .addComponent(lblDiasPermanencia))
                                 .addGap(129, 129, 129)
-                                .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblCantidadSencillas)
-                            .addComponent(lblCantidadDobles)))
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNuevoGrupo)
                             .addComponent(btnGuardarGrupo)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(77, 77, 77)
+                            .addComponent(lblLista)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(74, 74, 74)
                 .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(51, 51, 51)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombre)
                             .addComponent(lblApellido)
@@ -259,84 +473,106 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(txtApellido)
                                     .addComponent(ftxtTelefono)
                                     .addComponent(txtCiudadRes))
-                                .addGap(0, 1, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
+                        .addGap(32, 32, 32)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardarHuesped)
                             .addComponent(btnNuevoHuesped)
                             .addComponent(btnFinalizarRegistro))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlRegistrarLayout.setVerticalGroup(
             pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNuevoHuesped)
-                    .addComponent(btnNuevoGrupo))
-                .addGap(34, 34, 34)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFechaAlojamiento)
-                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(lblDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblApellido)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(lblCantidadSencillas)
-                    .addComponent(lblTelefono)
-                    .addComponent(ftxtTelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCantidadDobles)
-                    .addComponent(lblTipoDocu)
-                    .addComponent(cmbTipoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCantidadSuites)
-                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNoDocu)
-                    .addComponent(ftxtNoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigoReserva)
-                    .addComponent(lblEdad)
-                    .addComponent(spnEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGenero, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(spnNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevoHuesped)
+                            .addComponent(btnNuevoGrupo))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                .addComponent(lblNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCiudadRes)
-                            .addComponent(txtCiudadRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnGuardarGrupo))
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardarHuesped)
-                .addGap(18, 18, 18)
-                .addComponent(btnFinalizarRegistro)
-                .addGap(344, 344, 344))
-            .addComponent(sptSeparador, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblNombre)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblApellido))
+                                .addGap(13, 13, 13)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ftxtTelefono))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTipoDocu)
+                                    .addComponent(cmbTipoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblNoDocu)
+                                    .addComponent(ftxtNoDocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblEdad)
+                                    .addComponent(spnEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGenero, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(spnNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                                        .addComponent(lblNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCiudadRes)
+                                    .addComponent(txtCiudadRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGuardarHuesped)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnFinalizarRegistro)
+                                .addContainerGap(402, Short.MAX_VALUE))
+                            .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblFechaAlojamiento)
+                                    .addComponent(txtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCantidadSencillas)
+                                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCantidadSuites)
+                                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCodigoReserva)
+                                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnGuardarGrupo)
+                                .addGap(29, 29, 29)
+                                .addComponent(lblLista)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(325, 325, 325))))
+                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         lblFechaAlojamiento.setVisible(false);
@@ -376,20 +612,1625 @@ public class Ventana extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registrar Huespedes", pnlRegistrar);
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportView(null);
+
         pnlHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        pnlHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        pnlHabitaciones.setMinimumSize(new java.awt.Dimension(0, 0));
+        pnlHabitaciones.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        pnlTopAzul2.setBackground(new java.awt.Color(0, 153, 153));
+
+        lblHabitaciones.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblHabitaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblHabitaciones.setText("Habitaciones");
+
+        javax.swing.GroupLayout pnlTopAzul2Layout = new javax.swing.GroupLayout(pnlTopAzul2);
+        pnlTopAzul2.setLayout(pnlTopAzul2Layout);
+        pnlTopAzul2Layout.setHorizontalGroup(
+            pnlTopAzul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTopAzul2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblHabitaciones)
+                .addContainerGap())
+        );
+        pnlTopAzul2Layout.setVerticalGroup(
+            pnlTopAzul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTopAzul2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblHabitaciones)
+                .addGap(18, 18, 18))
+        );
+
+        pnlH101.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH101.setName("pnlH101");
+
+        lblH101.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH101.setForeground(new java.awt.Color(204, 204, 204));
+        lblH101.setText("101");
+
+        lblTipoH101.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH101.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH101.setText("Sencilla");
+
+        btnH101.setBackground(new java.awt.Color(51, 102, 0));
+        btnH101.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH101.setForeground(new java.awt.Color(204, 204, 204));
+        btnH101.setText("Disponible");
+        btnH101.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH101.setBorderPainted(false);
+        btnH101.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH101.setName("btnH101");
+        btnH101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH101ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH101Layout = new javax.swing.GroupLayout(pnlH101);
+        pnlH101.setLayout(pnlH101Layout);
+        pnlH101Layout.setHorizontalGroup(
+            pnlH101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH101Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH101)
+                    .addComponent(lblTipoH101))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addComponent(btnH101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlH101Layout.setVerticalGroup(
+            pnlH101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH101Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH101, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH101)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(btnH101))
+        );
+
+        pnlH102.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH102.setName("pnlH102");
+
+        lblH102.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH102.setForeground(new java.awt.Color(204, 204, 204));
+        lblH102.setText("102");
+
+        lblTipoH102.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH102.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH102.setText("Sencilla");
+
+        btnH102.setBackground(new java.awt.Color(51, 102, 0));
+        btnH102.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH102.setForeground(new java.awt.Color(204, 204, 204));
+        btnH102.setText("Disponible");
+        btnH102.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH102.setBorderPainted(false);
+        btnH102.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH102.setName("btnH102");
+        btnH102.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH102ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH102Layout = new javax.swing.GroupLayout(pnlH102);
+        pnlH102.setLayout(pnlH102Layout);
+        pnlH102Layout.setHorizontalGroup(
+            pnlH102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH102Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH102)
+                    .addComponent(lblTipoH102))
+                .addGap(46, 46, 46))
+            .addComponent(btnH102, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+        );
+        pnlH102Layout.setVerticalGroup(
+            pnlH102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH102Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH102, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH102)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnH102))
+        );
+
+        pnlH103.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH103.setName("pnlH103");
+
+        lblH103.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH103.setForeground(new java.awt.Color(204, 204, 204));
+        lblH103.setText("103");
+
+        lblTipoH103.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH103.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH103.setText("Sencilla");
+
+        btnH103.setBackground(new java.awt.Color(51, 102, 0));
+        btnH103.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH103.setForeground(new java.awt.Color(204, 204, 204));
+        btnH103.setText("Disponible");
+        btnH103.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH103.setBorderPainted(false);
+        btnH103.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH103.setName("btnH103");
+        btnH103.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH103ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH103Layout = new javax.swing.GroupLayout(pnlH103);
+        pnlH103.setLayout(pnlH103Layout);
+        pnlH103Layout.setHorizontalGroup(
+            pnlH103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH103Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH103)
+                    .addComponent(lblTipoH103))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addComponent(btnH103, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlH103Layout.setVerticalGroup(
+            pnlH103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH103Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH103, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH103)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnH103))
+        );
+
+        pnlH104.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH104.setName("pnlH104");
+
+        lblH104.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH104.setForeground(new java.awt.Color(204, 204, 204));
+        lblH104.setText("104");
+
+        lblTipoH104.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH104.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH104.setText("Sencilla");
+
+        btnH104.setBackground(new java.awt.Color(51, 102, 0));
+        btnH104.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH104.setForeground(new java.awt.Color(204, 204, 204));
+        btnH104.setText("Disponible");
+        btnH104.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH104.setBorderPainted(false);
+        btnH104.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH104.setName("btnH104");
+        btnH104.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH104ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH104Layout = new javax.swing.GroupLayout(pnlH104);
+        pnlH104.setLayout(pnlH104Layout);
+        pnlH104Layout.setHorizontalGroup(
+            pnlH104Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH104Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH104Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH104)
+                    .addComponent(lblTipoH104))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addComponent(btnH104, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlH104Layout.setVerticalGroup(
+            pnlH104Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH104Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH104, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH104)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(btnH104))
+        );
+
+        pnlH105.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH105.setName("pnlH105");
+
+        lblH105.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH105.setForeground(new java.awt.Color(204, 204, 204));
+        lblH105.setText("105");
+
+        lblTipoH105.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH105.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH105.setText("Sencilla");
+
+        btnH105.setBackground(new java.awt.Color(51, 102, 0));
+        btnH105.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH105.setForeground(new java.awt.Color(204, 204, 204));
+        btnH105.setText("Disponible");
+        btnH105.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH105.setBorderPainted(false);
+        btnH105.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH105.setName("btnH105");
+        btnH105.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH105ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH105Layout = new javax.swing.GroupLayout(pnlH105);
+        pnlH105.setLayout(pnlH105Layout);
+        pnlH105Layout.setHorizontalGroup(
+            pnlH105Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH105Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH105Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH105)
+                    .addComponent(lblTipoH105))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addComponent(btnH105, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlH105Layout.setVerticalGroup(
+            pnlH105Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH105Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH105, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH105)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(btnH105))
+        );
+
+        pnlH106.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH106.setName("pnlH106");
+
+        lblH106.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH106.setForeground(new java.awt.Color(204, 204, 204));
+        lblH106.setText("106");
+
+        lblTipoH106.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH106.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH106.setText("Doble");
+
+        btnH106.setBackground(new java.awt.Color(51, 102, 0));
+        btnH106.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH106.setForeground(new java.awt.Color(204, 204, 204));
+        btnH106.setText("Disponible");
+        btnH106.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH106.setBorderPainted(false);
+        btnH106.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH106.setName("btnH106");
+        btnH106.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH106ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlH106Layout = new javax.swing.GroupLayout(pnlH106);
+        pnlH106.setLayout(pnlH106Layout);
+        pnlH106Layout.setHorizontalGroup(
+            pnlH106Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH106Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH106Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH106)
+                    .addComponent(lblTipoH106))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnH106, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlH106Layout.setVerticalGroup(
+            pnlH106Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlH106Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH106, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoH106)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(btnH106))
+        );
+
+        pnlH107.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH107.setName("pnlH107");
+
+        btnH107.setBackground(new java.awt.Color(51, 102, 0));
+        btnH107.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH107.setForeground(new java.awt.Color(204, 204, 204));
+        btnH107.setText("Disponible");
+        btnH107.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH107.setBorderPainted(false);
+        btnH107.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH107.setName("btnH107");
+        btnH107.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH107ActionPerformed(evt);
+            }
+        });
+
+        lblH107.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH107.setForeground(new java.awt.Color(204, 204, 204));
+        lblH107.setText("107");
+
+        lblTipoH107.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH107.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH107.setText("Doble");
+
+        javax.swing.GroupLayout pnlH107Layout = new javax.swing.GroupLayout(pnlH107);
+        pnlH107.setLayout(pnlH107Layout);
+        pnlH107Layout.setHorizontalGroup(
+            pnlH107Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH107, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlH107Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH107Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH107)
+                    .addComponent(lblTipoH107))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH107Layout.setVerticalGroup(
+            pnlH107Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH107Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH107, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH107)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH107))
+        );
+
+        pnlH203.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH203.setName("pnlH203");
+
+        btnH203.setBackground(new java.awt.Color(51, 102, 0));
+        btnH203.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH203.setForeground(new java.awt.Color(204, 204, 204));
+        btnH203.setText("Disponible");
+        btnH203.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH203.setBorderPainted(false);
+        btnH203.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH203.setName("btnH203");
+        btnH203.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH203ActionPerformed(evt);
+            }
+        });
+
+        lblH203.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH203.setForeground(new java.awt.Color(204, 204, 204));
+        lblH203.setText("203");
+
+        lblTipoH203.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH203.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH203.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH203Layout = new javax.swing.GroupLayout(pnlH203);
+        pnlH203.setLayout(pnlH203Layout);
+        pnlH203Layout.setHorizontalGroup(
+            pnlH203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH203, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlH203Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH203)
+                    .addComponent(lblTipoH203))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH203Layout.setVerticalGroup(
+            pnlH203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH203Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH203, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH203)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH203))
+        );
+
+        pnlH209.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH209.setName("pnlH209");
+
+        btnH209.setBackground(new java.awt.Color(51, 102, 0));
+        btnH209.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH209.setForeground(new java.awt.Color(204, 204, 204));
+        btnH209.setText("Disponible");
+        btnH209.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH209.setBorderPainted(false);
+        btnH209.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH209.setName("btnH209");
+        btnH209.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH209ActionPerformed(evt);
+            }
+        });
+
+        lblH209.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH209.setForeground(new java.awt.Color(204, 204, 204));
+        lblH209.setText("209");
+
+        lblTipoH209.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH209.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH209.setText("Doble");
+
+        javax.swing.GroupLayout pnlH209Layout = new javax.swing.GroupLayout(pnlH209);
+        pnlH209.setLayout(pnlH209Layout);
+        pnlH209Layout.setHorizontalGroup(
+            pnlH209Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH209, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlH209Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH209Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH209)
+                    .addComponent(lblTipoH209))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH209Layout.setVerticalGroup(
+            pnlH209Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH209Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH209, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH209)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH209))
+        );
+
+        pnlH108.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH108.setName("pnlH108");
+
+        btnH108.setBackground(new java.awt.Color(51, 102, 0));
+        btnH108.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH108.setForeground(new java.awt.Color(204, 204, 204));
+        btnH108.setText("Disponible");
+        btnH108.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH108.setBorderPainted(false);
+        btnH108.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH108.setName("btnH108");
+        btnH108.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH108ActionPerformed(evt);
+            }
+        });
+
+        lblH108.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH108.setForeground(new java.awt.Color(204, 204, 204));
+        lblH108.setText("108");
+
+        lblTipoH108.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH108.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH108.setText("Doble");
+
+        javax.swing.GroupLayout pnlH108Layout = new javax.swing.GroupLayout(pnlH108);
+        pnlH108.setLayout(pnlH108Layout);
+        pnlH108Layout.setHorizontalGroup(
+            pnlH108Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH108, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH108Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH108Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH108)
+                    .addComponent(lblTipoH108))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH108Layout.setVerticalGroup(
+            pnlH108Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH108Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH108, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH108)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH108))
+        );
+
+        pnlH109.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH109.setName("pnlH109");
+
+        btnH109.setBackground(new java.awt.Color(51, 102, 0));
+        btnH109.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH109.setForeground(new java.awt.Color(204, 204, 204));
+        btnH109.setText("Disponible");
+        btnH109.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH109.setBorderPainted(false);
+        btnH109.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH109.setName("btnH109");
+        btnH109.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH109ActionPerformed(evt);
+            }
+        });
+
+        lblH109.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH109.setForeground(new java.awt.Color(204, 204, 204));
+        lblH109.setText("109");
+
+        lblTipoH109.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH109.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH109.setText("Doble");
+
+        javax.swing.GroupLayout pnlH109Layout = new javax.swing.GroupLayout(pnlH109);
+        pnlH109.setLayout(pnlH109Layout);
+        pnlH109Layout.setHorizontalGroup(
+            pnlH109Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH109, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH109Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH109Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH109)
+                    .addComponent(lblTipoH109))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH109Layout.setVerticalGroup(
+            pnlH109Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH109Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH109, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH109)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH109))
+        );
+
+        pnlH110.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH110.setName("pnlH110");
+
+        btnH110.setBackground(new java.awt.Color(51, 102, 0));
+        btnH110.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH110.setForeground(new java.awt.Color(204, 204, 204));
+        btnH110.setText("Disponible");
+        btnH110.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH110.setBorderPainted(false);
+        btnH110.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH110.setName("btnH110");
+        btnH110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH110ActionPerformed(evt);
+            }
+        });
+
+        lblH110.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH110.setForeground(new java.awt.Color(204, 204, 204));
+        lblH110.setText("110");
+
+        lblTipoH110.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH110.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH110.setText("Suite");
+
+        javax.swing.GroupLayout pnlH110Layout = new javax.swing.GroupLayout(pnlH110);
+        pnlH110.setLayout(pnlH110Layout);
+        pnlH110Layout.setHorizontalGroup(
+            pnlH110Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH110, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH110Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH110Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH110)
+                    .addComponent(lblTipoH110))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH110Layout.setVerticalGroup(
+            pnlH110Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH110Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH110, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH110)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH110))
+        );
+
+        pnlH201.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH201.setName("pnlH201");
+
+        btnH201.setBackground(new java.awt.Color(51, 102, 0));
+        btnH201.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH201.setForeground(new java.awt.Color(204, 204, 204));
+        btnH201.setText("Disponible");
+        btnH201.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH201.setBorderPainted(false);
+        btnH201.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH201.setName("btnH201");
+        btnH201.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH201ActionPerformed(evt);
+            }
+        });
+
+        lblH201.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH201.setForeground(new java.awt.Color(204, 204, 204));
+        lblH201.setText("201");
+
+        lblTipoH201.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH201.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH201.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH201Layout = new javax.swing.GroupLayout(pnlH201);
+        pnlH201.setLayout(pnlH201Layout);
+        pnlH201Layout.setHorizontalGroup(
+            pnlH201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH201, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH201Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH201)
+                    .addComponent(lblTipoH201))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH201Layout.setVerticalGroup(
+            pnlH201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH201Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH201, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH201)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH201))
+        );
+
+        pnlH204.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH204.setName("pnlH204");
+
+        btnH204.setBackground(new java.awt.Color(51, 102, 0));
+        btnH204.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH204.setForeground(new java.awt.Color(204, 204, 204));
+        btnH204.setText("Disponible");
+        btnH204.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH204.setBorderPainted(false);
+        btnH204.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH204.setName("btnH204");
+        btnH204.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH204ActionPerformed(evt);
+            }
+        });
+
+        lblH204.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH204.setForeground(new java.awt.Color(204, 204, 204));
+        lblH204.setText("204");
+
+        lblTipoH204.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH204.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH204.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH204Layout = new javax.swing.GroupLayout(pnlH204);
+        pnlH204.setLayout(pnlH204Layout);
+        pnlH204Layout.setHorizontalGroup(
+            pnlH204Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH204, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH204Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH204Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH204)
+                    .addComponent(lblTipoH204))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH204Layout.setVerticalGroup(
+            pnlH204Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH204Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH204, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH204)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH204))
+        );
+
+        pnlH202.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH202.setName("pnlH202");
+
+        btnH202.setBackground(new java.awt.Color(51, 102, 0));
+        btnH202.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH202.setForeground(new java.awt.Color(204, 204, 204));
+        btnH202.setText("Disponible");
+        btnH202.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH202.setBorderPainted(false);
+        btnH202.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH202.setName("btnH202");
+        btnH202.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH202ActionPerformed(evt);
+            }
+        });
+
+        lblH202.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH202.setForeground(new java.awt.Color(204, 204, 204));
+        lblH202.setText("202");
+
+        lblTipoH202.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH202.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH202.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH202Layout = new javax.swing.GroupLayout(pnlH202);
+        pnlH202.setLayout(pnlH202Layout);
+        pnlH202Layout.setHorizontalGroup(
+            pnlH202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH202, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH202Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH202)
+                    .addComponent(lblTipoH202))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH202Layout.setVerticalGroup(
+            pnlH202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH202Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH202, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH202)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH202))
+        );
+
+        pnlH205.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH205.setName("pnlH205");
+
+        btnH205.setBackground(new java.awt.Color(51, 102, 0));
+        btnH205.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH205.setForeground(new java.awt.Color(204, 204, 204));
+        btnH205.setText("Disponible");
+        btnH205.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH205.setBorderPainted(false);
+        btnH205.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH205.setName("btnH205");
+        btnH205.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH205ActionPerformed(evt);
+            }
+        });
+
+        lblH205.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH205.setForeground(new java.awt.Color(204, 204, 204));
+        lblH205.setText("205");
+
+        lblTipoH205.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH205.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH205.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH205Layout = new javax.swing.GroupLayout(pnlH205);
+        pnlH205.setLayout(pnlH205Layout);
+        pnlH205Layout.setHorizontalGroup(
+            pnlH205Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH205, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH205Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH205Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH205)
+                    .addComponent(lblTipoH205))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH205Layout.setVerticalGroup(
+            pnlH205Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH205Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH205, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH205)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH205))
+        );
+
+        pnlH206.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH206.setName("pnlH206");
+
+        btnH206.setBackground(new java.awt.Color(51, 102, 0));
+        btnH206.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH206.setForeground(new java.awt.Color(204, 204, 204));
+        btnH206.setText("Disponible");
+        btnH206.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH206.setBorderPainted(false);
+        btnH206.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH206.setName("btnH206");
+        btnH206.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH206ActionPerformed(evt);
+            }
+        });
+
+        lblH206.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH206.setForeground(new java.awt.Color(204, 204, 204));
+        lblH206.setText("206");
+
+        lblTipoH206.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH206.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH206.setText("Doble");
+
+        javax.swing.GroupLayout pnlH206Layout = new javax.swing.GroupLayout(pnlH206);
+        pnlH206.setLayout(pnlH206Layout);
+        pnlH206Layout.setHorizontalGroup(
+            pnlH206Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH206, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH206Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH206Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH206)
+                    .addComponent(lblTipoH206))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH206Layout.setVerticalGroup(
+            pnlH206Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH206Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH206, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH206)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH206))
+        );
+
+        pnlH207.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH207.setName("pnlH207");
+
+        btnH207.setBackground(new java.awt.Color(51, 102, 0));
+        btnH207.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH207.setForeground(new java.awt.Color(204, 204, 204));
+        btnH207.setText("Disponible");
+        btnH207.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH207.setBorderPainted(false);
+        btnH207.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH207.setName("btnH207");
+        btnH207.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH207ActionPerformed(evt);
+            }
+        });
+
+        lblH207.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH207.setForeground(new java.awt.Color(204, 204, 204));
+        lblH207.setText("207");
+
+        lblTipoH207.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH207.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH207.setText("Doble");
+
+        javax.swing.GroupLayout pnlH207Layout = new javax.swing.GroupLayout(pnlH207);
+        pnlH207.setLayout(pnlH207Layout);
+        pnlH207Layout.setHorizontalGroup(
+            pnlH207Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH207, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH207Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH207Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH207)
+                    .addComponent(lblTipoH207))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH207Layout.setVerticalGroup(
+            pnlH207Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH207Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH207, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH207)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH207))
+        );
+
+        pnlH208.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH208.setName("pnlH208");
+
+        btnH208.setBackground(new java.awt.Color(51, 102, 0));
+        btnH208.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH208.setForeground(new java.awt.Color(204, 204, 204));
+        btnH208.setText("Disponible");
+        btnH208.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH208.setBorderPainted(false);
+        btnH208.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH208.setName("btnH208");
+        btnH208.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH208ActionPerformed(evt);
+            }
+        });
+
+        lblH208.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH208.setForeground(new java.awt.Color(204, 204, 204));
+        lblH208.setText("208");
+
+        lblTipoH208.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH208.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH208.setText("Doble");
+
+        javax.swing.GroupLayout pnlH208Layout = new javax.swing.GroupLayout(pnlH208);
+        pnlH208.setLayout(pnlH208Layout);
+        pnlH208Layout.setHorizontalGroup(
+            pnlH208Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH208, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH208Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH208Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH208)
+                    .addComponent(lblTipoH208))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH208Layout.setVerticalGroup(
+            pnlH208Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH208Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH208, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH208)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH208))
+        );
+
+        pnlH210.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH210.setName("pnlH210");
+
+        btnH210.setBackground(new java.awt.Color(51, 102, 0));
+        btnH210.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH210.setForeground(new java.awt.Color(204, 204, 204));
+        btnH210.setText("Disponible");
+        btnH210.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH210.setBorderPainted(false);
+        btnH210.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH210.setName("btnH210");
+        btnH210.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH210ActionPerformed(evt);
+            }
+        });
+
+        lblH210.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH210.setForeground(new java.awt.Color(204, 204, 204));
+        lblH210.setText("210");
+
+        lblTipoH210.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH210.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH210.setText("Suite");
+
+        javax.swing.GroupLayout pnlH210Layout = new javax.swing.GroupLayout(pnlH210);
+        pnlH210.setLayout(pnlH210Layout);
+        pnlH210Layout.setHorizontalGroup(
+            pnlH210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH210, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH210Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH210)
+                    .addComponent(lblTipoH210))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH210Layout.setVerticalGroup(
+            pnlH210Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH210Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH210, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH210)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH210))
+        );
+
+        pnlH301.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH301.setName("pnlH301");
+
+        btnH301.setBackground(new java.awt.Color(51, 102, 0));
+        btnH301.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH301.setForeground(new java.awt.Color(204, 204, 204));
+        btnH301.setText("Disponible");
+        btnH301.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH301.setBorderPainted(false);
+        btnH301.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH301.setName("btnH301");
+        btnH301.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH301ActionPerformed(evt);
+            }
+        });
+
+        lblH301.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH301.setForeground(new java.awt.Color(204, 204, 204));
+        lblH301.setText("301");
+
+        lblTipoH301.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH301.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH301.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH301Layout = new javax.swing.GroupLayout(pnlH301);
+        pnlH301.setLayout(pnlH301Layout);
+        pnlH301Layout.setHorizontalGroup(
+            pnlH301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH301, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH301Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH301)
+                    .addComponent(lblTipoH301))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH301Layout.setVerticalGroup(
+            pnlH301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH301Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH301, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH301)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH301))
+        );
+
+        pnlH302.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH302.setName("pnlH302");
+
+        btnH302.setBackground(new java.awt.Color(51, 102, 0));
+        btnH302.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH302.setForeground(new java.awt.Color(204, 204, 204));
+        btnH302.setText("Disponible");
+        btnH302.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH302.setBorderPainted(false);
+        btnH302.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH302.setName("btnH302");
+        btnH302.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH302ActionPerformed(evt);
+            }
+        });
+
+        lblH302.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH302.setForeground(new java.awt.Color(204, 204, 204));
+        lblH302.setText("302");
+
+        lblTipoH302.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH302.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH302.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH302Layout = new javax.swing.GroupLayout(pnlH302);
+        pnlH302.setLayout(pnlH302Layout);
+        pnlH302Layout.setHorizontalGroup(
+            pnlH302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH302, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH302Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH302)
+                    .addComponent(lblTipoH302))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH302Layout.setVerticalGroup(
+            pnlH302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH302Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH302, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH302)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH302))
+        );
+
+        pnlH303.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH303.setName("pnlH303");
+
+        btnH303.setBackground(new java.awt.Color(51, 102, 0));
+        btnH303.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH303.setForeground(new java.awt.Color(204, 204, 204));
+        btnH303.setText("Disponible");
+        btnH303.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH303.setBorderPainted(false);
+        btnH303.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH303.setName("btnH303");
+        btnH303.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH303ActionPerformed(evt);
+            }
+        });
+
+        lblH303.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH303.setForeground(new java.awt.Color(204, 204, 204));
+        lblH303.setText("303");
+
+        lblTipoH303.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH303.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH303.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH303Layout = new javax.swing.GroupLayout(pnlH303);
+        pnlH303.setLayout(pnlH303Layout);
+        pnlH303Layout.setHorizontalGroup(
+            pnlH303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH303, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH303Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH303)
+                    .addComponent(lblTipoH303))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH303Layout.setVerticalGroup(
+            pnlH303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH303Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH303, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH303)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH303))
+        );
+
+        pnlH304.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH304.setName("pnlH304");
+
+        btnH304.setBackground(new java.awt.Color(51, 102, 0));
+        btnH304.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH304.setForeground(new java.awt.Color(204, 204, 204));
+        btnH304.setText("Disponible");
+        btnH304.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH304.setBorderPainted(false);
+        btnH304.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH304.setName("btnH304");
+        btnH304.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH304ActionPerformed(evt);
+            }
+        });
+
+        lblH304.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH304.setForeground(new java.awt.Color(204, 204, 204));
+        lblH304.setText("304");
+
+        lblTipoH304.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH304.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH304.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH304Layout = new javax.swing.GroupLayout(pnlH304);
+        pnlH304.setLayout(pnlH304Layout);
+        pnlH304Layout.setHorizontalGroup(
+            pnlH304Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH304, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH304Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH304Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH304)
+                    .addComponent(lblTipoH304))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH304Layout.setVerticalGroup(
+            pnlH304Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH304Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH304, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH304)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH304))
+        );
+
+        pnlH305.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH305.setName("pnlH305");
+
+        btnH305.setBackground(new java.awt.Color(51, 102, 0));
+        btnH305.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH305.setForeground(new java.awt.Color(204, 204, 204));
+        btnH305.setText("Disponible");
+        btnH305.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH305.setBorderPainted(false);
+        btnH305.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH305.setName("btnH305");
+        btnH305.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH305ActionPerformed(evt);
+            }
+        });
+
+        lblH305.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH305.setForeground(new java.awt.Color(204, 204, 204));
+        lblH305.setText("305");
+
+        lblTipoH305.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH305.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH305.setText("Sencilla");
+
+        javax.swing.GroupLayout pnlH305Layout = new javax.swing.GroupLayout(pnlH305);
+        pnlH305.setLayout(pnlH305Layout);
+        pnlH305Layout.setHorizontalGroup(
+            pnlH305Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH305, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlH305Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH305Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH305)
+                    .addComponent(lblTipoH305))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH305Layout.setVerticalGroup(
+            pnlH305Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH305Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH305, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH305)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH305))
+        );
+
+        pnlH306.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH306.setName("pnlH306");
+
+        btnH306.setBackground(new java.awt.Color(51, 102, 0));
+        btnH306.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH306.setForeground(new java.awt.Color(204, 204, 204));
+        btnH306.setText("Disponible");
+        btnH306.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH306.setBorderPainted(false);
+        btnH306.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH306.setName("btnH306");
+        btnH306.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH306ActionPerformed(evt);
+            }
+        });
+
+        lblH306.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH306.setForeground(new java.awt.Color(204, 204, 204));
+        lblH306.setText("306");
+
+        lblTipoH306.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH306.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH306.setText("Doble");
+
+        javax.swing.GroupLayout pnlH306Layout = new javax.swing.GroupLayout(pnlH306);
+        pnlH306.setLayout(pnlH306Layout);
+        pnlH306Layout.setHorizontalGroup(
+            pnlH306Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH306, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH306Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH306Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH306)
+                    .addComponent(lblTipoH306))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH306Layout.setVerticalGroup(
+            pnlH306Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH306Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH306, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH306)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH306))
+        );
+
+        pnlH308.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH308.setName("pnlH308");
+
+        btnH308.setBackground(new java.awt.Color(51, 102, 0));
+        btnH308.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH308.setForeground(new java.awt.Color(204, 204, 204));
+        btnH308.setText("Disponible");
+        btnH308.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH308.setBorderPainted(false);
+        btnH308.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH308.setName("btnH308");
+        btnH308.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH308ActionPerformed(evt);
+            }
+        });
+
+        lblH308.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH308.setForeground(new java.awt.Color(204, 204, 204));
+        lblH308.setText("308");
+
+        lblTipoH308.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH308.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH308.setText("Doble");
+
+        javax.swing.GroupLayout pnlH308Layout = new javax.swing.GroupLayout(pnlH308);
+        pnlH308.setLayout(pnlH308Layout);
+        pnlH308Layout.setHorizontalGroup(
+            pnlH308Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH308, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH308Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH308Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH308)
+                    .addComponent(lblTipoH308))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH308Layout.setVerticalGroup(
+            pnlH308Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH308Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH308, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH308)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH308))
+        );
+
+        pnlH307.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH307.setName("pnlH307");
+
+        btnH307.setBackground(new java.awt.Color(51, 102, 0));
+        btnH307.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH307.setForeground(new java.awt.Color(204, 204, 204));
+        btnH307.setText("Disponible");
+        btnH307.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH307.setBorderPainted(false);
+        btnH307.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH307.setName("btnH307");
+        btnH307.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH307ActionPerformed(evt);
+            }
+        });
+
+        lblH307.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH307.setForeground(new java.awt.Color(204, 204, 204));
+        lblH307.setText("307");
+
+        lblTipoH307.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH307.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH307.setText("Doble");
+
+        javax.swing.GroupLayout pnlH307Layout = new javax.swing.GroupLayout(pnlH307);
+        pnlH307.setLayout(pnlH307Layout);
+        pnlH307Layout.setHorizontalGroup(
+            pnlH307Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH307, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH307Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH307Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH307)
+                    .addComponent(lblTipoH307))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH307Layout.setVerticalGroup(
+            pnlH307Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH307Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH307, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH307)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH307))
+        );
+
+        pnlH309.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH309.setName("pnlH309");
+
+        btnH309.setBackground(new java.awt.Color(51, 102, 0));
+        btnH309.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH309.setForeground(new java.awt.Color(204, 204, 204));
+        btnH309.setText("Disponible");
+        btnH309.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH309.setBorderPainted(false);
+        btnH309.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH309.setName("btnH309");
+        btnH309.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH309ActionPerformed(evt);
+            }
+        });
+
+        lblH309.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH309.setForeground(new java.awt.Color(204, 204, 204));
+        lblH309.setText("309");
+
+        lblTipoH309.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH309.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH309.setText("Doble");
+
+        javax.swing.GroupLayout pnlH309Layout = new javax.swing.GroupLayout(pnlH309);
+        pnlH309.setLayout(pnlH309Layout);
+        pnlH309Layout.setHorizontalGroup(
+            pnlH309Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH309, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addGroup(pnlH309Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH309Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH309)
+                    .addComponent(lblTipoH309))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlH309Layout.setVerticalGroup(
+            pnlH309Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH309Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH309, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH309)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH309))
+        );
+
+        pnlH310.setBackground(new java.awt.Color(50, 153, 0));
+        pnlH310.setName("pnlH310");
+
+        btnH310.setBackground(new java.awt.Color(51, 102, 0));
+        btnH310.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnH310.setForeground(new java.awt.Color(204, 204, 204));
+        btnH310.setText("Disponible");
+        btnH310.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 51, 0)));
+        btnH310.setBorderPainted(false);
+        btnH310.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnH310.setName("btnH310");
+        btnH310.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnH310ActionPerformed(evt);
+            }
+        });
+
+        lblH310.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblH310.setForeground(new java.awt.Color(204, 204, 204));
+        lblH310.setText("310");
+
+        lblTipoH310.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTipoH310.setForeground(new java.awt.Color(204, 204, 204));
+        lblTipoH310.setText("Suite");
+
+        javax.swing.GroupLayout pnlH310Layout = new javax.swing.GroupLayout(pnlH310);
+        pnlH310.setLayout(pnlH310Layout);
+        pnlH310Layout.setHorizontalGroup(
+            pnlH310Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnH310, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlH310Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlH310Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblH310)
+                    .addComponent(lblTipoH310))
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        pnlH310Layout.setVerticalGroup(
+            pnlH310Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlH310Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblH310, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblTipoH310)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnH310))
+        );
 
         javax.swing.GroupLayout pnlHabitacionesLayout = new javax.swing.GroupLayout(pnlHabitaciones);
         pnlHabitaciones.setLayout(pnlHabitacionesLayout);
         pnlHabitacionesLayout.setHorizontalGroup(
             pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1216, Short.MAX_VALUE)
+            .addComponent(pnlTopAzul2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnlH101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlH107, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlH203, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlH209, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlH305, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addComponent(pnlH102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH106, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addComponent(pnlH108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH201, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH202, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addComponent(pnlH204, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH205, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH206, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH207, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH208, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addComponent(pnlH210, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH301, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH302, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH303, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH304, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addComponent(pnlH306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH307, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH308, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH309, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlH310, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
         );
         pnlHabitacionesLayout.setVerticalGroup(
             pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 948, Short.MAX_VALUE)
+            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                .addComponent(pnlTopAzul2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlH204, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                .addComponent(pnlH106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(pnlH202, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                    .addComponent(pnlH105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnlH201, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                    .addComponent(pnlH104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnlH110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                    .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(pnlH101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pnlH102, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pnlH103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                            .addGap(15, 15, 15)
+                                            .addComponent(pnlH107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabitacionesLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(pnlH109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(pnlH108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(pnlH203, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabitacionesLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pnlH205, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlH206, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlH207, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlH208, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(15, 15, 15)
+                .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlH210, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlH301, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlH307, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlH306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(108, 326, Short.MAX_VALUE))
+                    .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                        .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                .addComponent(pnlH304, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlH310, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlHabitacionesLayout.createSequentialGroup()
+                                .addComponent(pnlH209, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlH305, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabitacionesLayout.createSequentialGroup()
+                                .addComponent(pnlH303, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlH309, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabitacionesLayout.createSequentialGroup()
+                                .addComponent(pnlH302, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlH308, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("Habitaciones", pnlHabitaciones);
+        jScrollPane1.setViewportView(pnlHabitaciones);
+
+        jTabbedPane1.addTab("Habitaciones", jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -405,9 +2246,15 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void btnGuardarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGrupoActionPerformed
         btnNuevoHuesped.setVisible(true);
         grupo=new Grupo(Integer.parseInt(ftxtDiasPermanencia.getText()),Integer.parseInt(ftxtCantidadSencillas.getText()),Integer.parseInt(ftxtCantidadDobles.getText()),Integer.parseInt(ftxtCantidadSuites.getText()),txtFechaAlojamiento.getText(),Integer.parseInt(ftxtCodigoReserva.getText()));
+        hotel.getGrupos().add(grupo);
+        modelo.addElement(grupo.toStringForList());
+        
     }//GEN-LAST:event_btnGuardarGrupoActionPerformed
 
     private void btnNuevoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoGrupoActionPerformed
@@ -511,12 +2358,717 @@ public class Ventana extends javax.swing.JFrame {
         sptSeparador.setVisible(false);
               
         grupo.mostrarHuespedes();
+      
         LecturaEscritura le=new LecturaEscritura();
         le.escribirProductos(grupo.getHuespedes(),grupo);
         
         
     }//GEN-LAST:event_btnFinalizarRegistroActionPerformed
 
+    private void ftxtCodigoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCodigoReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtCodigoReservaActionPerformed
+
+    private void ftxtCantidadSencillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadSencillasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtCantidadSencillasActionPerformed
+
+    private void ftxtCantidadDoblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadDoblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtCantidadDoblesActionPerformed
+
+    private void ftxtCantidadSuitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadSuitesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtCantidadSuitesActionPerformed
+
+    
+    private void btnH101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH101ActionPerformed
+
+        ventanahabitacion.getlblNumH().setText(lblH101.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH101.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(101);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        
+    }//GEN-LAST:event_btnH101ActionPerformed
+
+    public JButton getBoton(String numeroh){
+        for(JButton b:botonesH){
+            System.out.println(b.getText());
+        }
+        for(int i=0;i<30;i++){
+            if(botonesH.get(i).getName().contains(numeroh)){
+                return botonesH.get(i);
+            }
+        }
+        return btnH101;
+    }
+    
+    public JPanel getPanel(String numeroh){
+        for(int i=0;i<30;i++){
+            if(panelesH.get(i).getName().contains(numeroh)){
+                return panelesH.get(i);
+            }
+        }
+        return pnlH101;
+    }
+    
+    private void btnH102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH102ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH102.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH102.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(102);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        
+    }//GEN-LAST:event_btnH102ActionPerformed
+
+    private void btnH107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH107ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH107.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH107.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(107);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        
+    }//GEN-LAST:event_btnH107ActionPerformed
+
+    private void btnH203ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH203ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH203.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH203.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(203);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH203.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH203ActionPerformed
+
+    private void btnH209ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH209ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH209.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH209.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(209);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH209.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH209ActionPerformed
+
+    private void btnH108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH108ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH108.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH108.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(108);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH108.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH108ActionPerformed
+
+    private void btnH109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH109ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH109.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH109.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(109);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH109.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH109ActionPerformed
+
+    private void btnH110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH110ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH110.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH110.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(110);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("350000");
+        ventanahabitacion.setVisible(true); 
+        btnH110.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH110ActionPerformed
+
+    private void btnH201ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH201ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH201.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH201.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(201);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH201.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH201ActionPerformed
+
+    private void btnH204ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH204ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH204.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH204.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(204);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH204.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH204ActionPerformed
+
+    private void btnH202ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH202ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH202.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH202.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(202);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH202.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH202ActionPerformed
+
+    private void btnH205ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH205ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH205.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH205.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(205);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH205.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH205ActionPerformed
+
+    private void btnH206ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH206ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH206.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH206.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(206);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH206.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH206ActionPerformed
+
+    private void btnH207ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH207ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH207.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH207.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(207);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH207.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH207ActionPerformed
+
+    private void btnH208ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH208ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH208.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH208.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(208);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH208.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH208ActionPerformed
+
+    private void btnH210ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH210ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH210.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH210.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(210);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("350000");
+        ventanahabitacion.setVisible(true); 
+        btnH210.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH210ActionPerformed
+
+    private void btnH301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH301ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH301.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH301.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(301);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH301.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH301ActionPerformed
+
+    private void btnH302ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH302ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH302.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH302.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(302);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH302.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH302ActionPerformed
+
+    private void btnH303ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH303ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH303.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH303.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(303);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH303.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH303ActionPerformed
+
+    private void btnH304ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH304ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH304.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH304.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(304);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH304.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH304ActionPerformed
+
+    private void btnH305ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH305ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH305.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH305.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(305);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH305.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH305ActionPerformed
+
+    private void btnH306ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH306ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH306.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH306.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(306);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH306.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH306ActionPerformed
+
+    private void btnH308ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH308ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH308.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH308.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(308);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH308.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH308ActionPerformed
+
+    private void btnH307ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH307ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH307.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH307.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(307);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH307.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH307ActionPerformed
+
+    private void btnH309ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH309ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH309.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH309.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(309);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH309.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH309ActionPerformed
+
+    private void btnH310ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH310ActionPerformed
+        
+        ventanahabitacion.getlblNumH().setText(lblH310.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH310.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(310);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("350000");
+        ventanahabitacion.setVisible(true); 
+        btnH310.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH310ActionPerformed
+
+    private void btnH103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH103ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH103.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH103.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(103);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH103.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH103ActionPerformed
+
+    private void btnH104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH104ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH104.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH104.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(104);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH104.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH104ActionPerformed
+
+    private void btnH105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH105ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH105.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH105.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(105);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("100000");
+        ventanahabitacion.setVisible(true); 
+        btnH105.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH105ActionPerformed
+
+    private void btnH106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH106ActionPerformed
+       
+        ventanahabitacion.getlblNumH().setText(lblH106.getText());
+        ventanahabitacion.getlblTipoH().setText(lblTipoH106.getText());
+        Habitacion h=(Habitacion)hotel.getHabitaciones().get(106);
+        System.out.println(h.getEstado()+"e");
+        ventanahabitacion.getlblEstado().setText(h.getEstado());
+        ventanahabitacion.getlblPrecioN().setText("200000");
+        ventanahabitacion.setVisible(true); 
+        btnH106.setText(h.getEstado());
+        if(h.getEstado().equals("Disponible")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(true);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+        else if(h.getEstado().equals("Ocupado")){
+            ventanahabitacion.getbtnVaciarHabitacion().setVisible(true);
+            ventanahabitacion.getbtnRegistrarGrupo().setVisible(false);
+            ventanahabitacion.getftxtCodigoReserva().setText("");
+        }
+    }//GEN-LAST:event_btnH106ActionPerformed
+    
+    public Hotel getHotel(){
+        return hotel;
+    }
+    
+
+   
     /**
      * @param args the command line arguments
      */
@@ -545,9 +3097,11 @@ public class Ventana extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
-                new Ventana().setVisible(true);
+               new Ventana().setVisible(true);
             }
         });
     }
@@ -556,6 +3110,36 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalizarRegistro;
     private javax.swing.JButton btnGuardarGrupo;
     private javax.swing.JButton btnGuardarHuesped;
+    private javax.swing.JButton btnH101;
+    private javax.swing.JButton btnH102;
+    private javax.swing.JButton btnH103;
+    private javax.swing.JButton btnH104;
+    private javax.swing.JButton btnH105;
+    private javax.swing.JButton btnH106;
+    private javax.swing.JButton btnH107;
+    private javax.swing.JButton btnH108;
+    private javax.swing.JButton btnH109;
+    private javax.swing.JButton btnH110;
+    private javax.swing.JButton btnH201;
+    private javax.swing.JButton btnH202;
+    private javax.swing.JButton btnH203;
+    private javax.swing.JButton btnH204;
+    private javax.swing.JButton btnH205;
+    private javax.swing.JButton btnH206;
+    private javax.swing.JButton btnH207;
+    private javax.swing.JButton btnH208;
+    private javax.swing.JButton btnH209;
+    private javax.swing.JButton btnH210;
+    private javax.swing.JButton btnH301;
+    private javax.swing.JButton btnH302;
+    private javax.swing.JButton btnH303;
+    private javax.swing.JButton btnH304;
+    private javax.swing.JButton btnH305;
+    private javax.swing.JButton btnH306;
+    private javax.swing.JButton btnH307;
+    private javax.swing.JButton btnH308;
+    private javax.swing.JButton btnH309;
+    private javax.swing.JButton btnH310;
     private javax.swing.JButton btnNuevoGrupo;
     private javax.swing.JButton btnNuevoHuesped;
     private javax.swing.JComboBox<String> cmbGenero;
@@ -568,6 +3152,9 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtNoDocu;
     private javax.swing.JFormattedTextField ftxtTelefono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCantidadDobles;
@@ -579,13 +3166,107 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblFechaAlojamiento;
     private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblH101;
+    private javax.swing.JLabel lblH102;
+    private javax.swing.JLabel lblH103;
+    private javax.swing.JLabel lblH104;
+    private javax.swing.JLabel lblH105;
+    private javax.swing.JLabel lblH106;
+    private javax.swing.JLabel lblH107;
+    private javax.swing.JLabel lblH108;
+    private javax.swing.JLabel lblH109;
+    private javax.swing.JLabel lblH110;
+    private javax.swing.JLabel lblH201;
+    private javax.swing.JLabel lblH202;
+    private javax.swing.JLabel lblH203;
+    private javax.swing.JLabel lblH204;
+    private javax.swing.JLabel lblH205;
+    private javax.swing.JLabel lblH206;
+    private javax.swing.JLabel lblH207;
+    private javax.swing.JLabel lblH208;
+    private javax.swing.JLabel lblH209;
+    private javax.swing.JLabel lblH210;
+    private javax.swing.JLabel lblH301;
+    private javax.swing.JLabel lblH302;
+    private javax.swing.JLabel lblH303;
+    private javax.swing.JLabel lblH304;
+    private javax.swing.JLabel lblH305;
+    private javax.swing.JLabel lblH306;
+    private javax.swing.JLabel lblH307;
+    private javax.swing.JLabel lblH308;
+    private javax.swing.JLabel lblH309;
+    private javax.swing.JLabel lblH310;
+    private javax.swing.JLabel lblHabitaciones;
+    private javax.swing.JLabel lblLista;
     private javax.swing.JLabel lblNacionalidad;
     private javax.swing.JLabel lblNoDocu;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTipoDocu;
+    private javax.swing.JLabel lblTipoH101;
+    private javax.swing.JLabel lblTipoH102;
+    private javax.swing.JLabel lblTipoH103;
+    private javax.swing.JLabel lblTipoH104;
+    private javax.swing.JLabel lblTipoH105;
+    private javax.swing.JLabel lblTipoH106;
+    private javax.swing.JLabel lblTipoH107;
+    private javax.swing.JLabel lblTipoH108;
+    private javax.swing.JLabel lblTipoH109;
+    private javax.swing.JLabel lblTipoH110;
+    private javax.swing.JLabel lblTipoH201;
+    private javax.swing.JLabel lblTipoH202;
+    private javax.swing.JLabel lblTipoH203;
+    private javax.swing.JLabel lblTipoH204;
+    private javax.swing.JLabel lblTipoH205;
+    private javax.swing.JLabel lblTipoH206;
+    private javax.swing.JLabel lblTipoH207;
+    private javax.swing.JLabel lblTipoH208;
+    private javax.swing.JLabel lblTipoH209;
+    private javax.swing.JLabel lblTipoH210;
+    private javax.swing.JLabel lblTipoH301;
+    private javax.swing.JLabel lblTipoH302;
+    private javax.swing.JLabel lblTipoH303;
+    private javax.swing.JLabel lblTipoH304;
+    private javax.swing.JLabel lblTipoH305;
+    private javax.swing.JLabel lblTipoH306;
+    private javax.swing.JLabel lblTipoH307;
+    private javax.swing.JLabel lblTipoH308;
+    private javax.swing.JLabel lblTipoH309;
+    private javax.swing.JLabel lblTipoH310;
+    private javax.swing.JList<String> lstListaGrupos;
+    private javax.swing.JPanel pnlH101;
+    private javax.swing.JPanel pnlH102;
+    private javax.swing.JPanel pnlH103;
+    private javax.swing.JPanel pnlH104;
+    private javax.swing.JPanel pnlH105;
+    private javax.swing.JPanel pnlH106;
+    private javax.swing.JPanel pnlH107;
+    private javax.swing.JPanel pnlH108;
+    private javax.swing.JPanel pnlH109;
+    private javax.swing.JPanel pnlH110;
+    private javax.swing.JPanel pnlH201;
+    private javax.swing.JPanel pnlH202;
+    private javax.swing.JPanel pnlH203;
+    private javax.swing.JPanel pnlH204;
+    private javax.swing.JPanel pnlH205;
+    private javax.swing.JPanel pnlH206;
+    private javax.swing.JPanel pnlH207;
+    private javax.swing.JPanel pnlH208;
+    private javax.swing.JPanel pnlH209;
+    private javax.swing.JPanel pnlH210;
+    private javax.swing.JPanel pnlH301;
+    private javax.swing.JPanel pnlH302;
+    private javax.swing.JPanel pnlH303;
+    private javax.swing.JPanel pnlH304;
+    private javax.swing.JPanel pnlH305;
+    private javax.swing.JPanel pnlH306;
+    private javax.swing.JPanel pnlH307;
+    private javax.swing.JPanel pnlH308;
+    private javax.swing.JPanel pnlH309;
+    private javax.swing.JPanel pnlH310;
     private javax.swing.JPanel pnlHabitaciones;
     private javax.swing.JPanel pnlRegistrar;
+    private javax.swing.JPanel pnlTopAzul2;
     private javax.swing.JSpinner spnEdad;
     private javax.swing.JSpinner spnNacionalidad;
     private javax.swing.JSeparator sptSeparador;

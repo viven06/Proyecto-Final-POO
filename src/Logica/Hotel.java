@@ -1,14 +1,14 @@
 
 package Logica;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 public class Hotel {
     private HashMap<Integer,Habitacion> habitaciones;
+    private ArrayList<GrupoListItem> grupos;
     
     public Hotel(){
         habitaciones=new HashMap<Integer,Habitacion>();
+        grupos=new ArrayList<Grupo>();
         for(int i=1;i<=10;i++){
             int numerohp1=100+i;
             if(i<=6){
@@ -45,6 +45,14 @@ public class Hotel {
                 habitaciones.put(numerohp3,new Habitacion("Disponible",0,"Suite") );
             }   
         }
+    }
+    
+    public HashMap getHabitaciones(){
+        return habitaciones;
+    }
+    
+    public ArrayList<Grupo> getGrupos(){
+        return grupos;
     }
     
     public void mostrarHabitaciones(){

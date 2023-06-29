@@ -16,6 +16,15 @@ public class Habitacion {
         this.grupo=grupo;
     }
     
+    public String getEstado(){
+        return estado;
+    }
+    
+    public int getGrupo(){
+        return grupo;
+    }
+    
+    
     public String toString(){
         return "Tipo : "+ tipoHabitacion+" || Estado : "+estado;
     }
