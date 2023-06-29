@@ -23,9 +23,9 @@ public class Grupo {
     }
     
     public int calcularCosto(){
-        int valorSencilla=10000;
-        int valorDoble=30000;
-        int valorSuite=50000;
+        int valorSencilla=100000;
+        int valorDoble=200000;
+        int valorSuite=350000;
         return (valorSencilla*dias_permanencia*hSencilla)+ (valorDoble*dias_permanencia*hDoble) + (valorSuite*hSuite*dias_permanencia);
     }
     

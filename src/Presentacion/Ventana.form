@@ -83,6 +83,15 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnGuardarGrupo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLista" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnNuevoGrupo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="0" min="-2" pref="415" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
@@ -96,15 +105,17 @@
                                                   <Component id="lblCantidadDobles" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblCantidadSuites" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblCodigoReserva" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblTotalPagar" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="ftxtCantidadSuites" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                                          <Component id="ftxtCantidadDobles" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                                          <Component id="ftxtCantidadSencillas" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                                          <Component id="ftxtCodigoReserva" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="ftxtCantidadSuites" alignment="0" pref="111" max="32767" attributes="0"/>
+                                          <Component id="ftxtCantidadDobles" alignment="0" pref="111" max="32767" attributes="0"/>
+                                          <Component id="ftxtCantidadSencillas" alignment="0" pref="111" max="32767" attributes="0"/>
+                                          <Component id="ftxtCodigoReserva" alignment="0" pref="111" max="32767" attributes="0"/>
+                                          <Component id="lblValorPagar" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -119,21 +130,6 @@
                                       </Group>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnGuardarGrupo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLista" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnNuevoGrupo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="415" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
@@ -248,7 +244,7 @@
                               <Component id="btnGuardarHuesped" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnFinalizarRegistro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="402" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -268,7 +264,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblCantidadSencillas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ftxtCantidadSencillas" alignment="3" pref="26" max="32767" attributes="0"/>
+                                  <Component id="ftxtCantidadSencillas" alignment="3" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -286,12 +282,17 @@
                                   <Component id="ftxtCodigoReserva" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnGuardarGrupo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="lblLista" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblTotalPagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblValorPagar" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnGuardarGrupo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblLista" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="162" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1001,6 +1002,27 @@
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ftxtFechaAlojamiento.setVisible(false);"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblTotalPagar">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Total a Pagar:"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="lblTotalPagar.setVisible(false);"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblValorPagar">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="lblValorPagar.setVisible(false);"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -1189,7 +1211,7 @@
                                       <Component id="pnlH307" min="-2" max="-2" attributes="0"/>
                                       <Component id="pnlH306" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="108" pref="326" max="32767" attributes="0"/>
+                                  <EmptySpace min="108" pref="344" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">

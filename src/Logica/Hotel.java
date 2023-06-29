@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Hotel {
     private HashMap<Integer,Habitacion> habitaciones;
-    private ArrayList<GrupoListItem> grupos;
+    private ArrayList<Grupo> grupos;
     
     public Hotel(){
         habitaciones=new HashMap<Integer,Habitacion>();

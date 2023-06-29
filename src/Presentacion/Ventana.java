@@ -98,6 +98,8 @@ public class Ventana extends javax.swing.JFrame {
         lstListaGrupos = new javax.swing.JList<>();
         lblLista = new javax.swing.JLabel();
         ftxtFechaAlojamiento = new javax.swing.JFormattedTextField();
+        lblTotalPagar = new javax.swing.JLabel();
+        lblValorPagar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlHabitaciones = new javax.swing.JPanel();
         pnlTopAzul2 = new javax.swing.JPanel();
@@ -410,12 +412,24 @@ public class Ventana extends javax.swing.JFrame {
 
         ftxtFechaAlojamiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
+        lblTotalPagar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTotalPagar.setText("Total a Pagar:");
+
+        lblValorPagar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout pnlRegistrarLayout = new javax.swing.GroupLayout(pnlRegistrar);
         pnlRegistrar.setLayout(pnlRegistrarLayout);
         pnlRegistrarLayout.setHorizontalGroup(
             pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRegistrarLayout.createSequentialGroup()
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardarGrupo)
+                            .addComponent(lblLista)
+                            .addComponent(btnNuevoGrupo)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -428,13 +442,15 @@ public class Ventana extends javax.swing.JFrame {
                                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblCantidadDobles, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCantidadSuites, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(lblCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblTotalPagar, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(ftxtCantidadSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(ftxtCantidadDobles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(lblValorPagar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRegistrarLayout.createSequentialGroup()
                                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFechaAlojamiento)
@@ -442,18 +458,7 @@ public class Ventana extends javax.swing.JFrame {
                                 .addGap(129, 129, 129)
                                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardarGrupo)
-                            .addComponent(lblLista)
-                            .addGroup(pnlRegistrarLayout.createSequentialGroup()
-                                .addComponent(btnNuevoGrupo)
-                                .addGap(129, 129, 129))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistrarLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(ftxtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(74, 74, 74)
                 .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,7 +550,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(btnGuardarHuesped)
                         .addGap(18, 18, 18)
                         .addComponent(btnFinalizarRegistro)
-                        .addContainerGap(402, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -561,7 +566,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCantidadSencillas)
-                            .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                            .addComponent(ftxtCantidadSencillas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCantidadDobles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -575,12 +580,16 @@ public class Ventana extends javax.swing.JFrame {
                             .addComponent(lblCodigoReserva)
                             .addComponent(ftxtCodigoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGuardarGrupo)
-                        .addGap(29, 29, 29)
-                        .addComponent(lblLista)
+                        .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotalPagar)
+                            .addComponent(lblValorPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addComponent(btnGuardarGrupo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblLista)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(325, 325, 325))))
+                        .addGap(307, 307, 307))))
         );
 
         lblFechaAlojamiento.setVisible(false);
@@ -617,6 +626,8 @@ public class Ventana extends javax.swing.JFrame {
         btnGuardarHuesped.setVisible(false);
         btnFinalizarRegistro.setVisible(false);
         ftxtFechaAlojamiento.setVisible(false);
+        lblTotalPagar.setVisible(false);
+        lblValorPagar.setVisible(false);
 
         jTabbedPane1.addTab("Registrar Huespedes", pnlRegistrar);
 
@@ -2214,7 +2225,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlH307, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlH306, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(108, 326, Short.MAX_VALUE))
+                        .addGap(108, 344, Short.MAX_VALUE))
                     .addGroup(pnlHabitacionesLayout.createSequentialGroup()
                         .addGroup(pnlHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlHabitacionesLayout.createSequentialGroup()
@@ -2260,6 +2271,7 @@ public class Ventana extends javax.swing.JFrame {
     
     private void btnGuardarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGrupoActionPerformed
         btnNuevoHuesped.setVisible(true);
+        lblTotalPagar.setVisible(true);
         String date=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         if(ftxtFechaAlojamiento.getText().isBlank()){ftxtFechaAlojamiento.setText(date);}
         if(ftxtDiasPermanencia.getText().isBlank()){ftxtDiasPermanencia.setText("1");}
@@ -2269,6 +2281,8 @@ public class Ventana extends javax.swing.JFrame {
         if(ftxtCodigoReserva.getText().isBlank()){ftxtCodigoReserva.setText(String.valueOf(codigoprovisional));}
         codigoprovisional++;
         grupo=new Grupo(Integer.parseInt(ftxtDiasPermanencia.getText()),Integer.parseInt(ftxtCantidadSencillas.getText()),Integer.parseInt(ftxtCantidadDobles.getText()),Integer.parseInt(ftxtCantidadSuites.getText()),ftxtFechaAlojamiento.getText(),Integer.parseInt(ftxtCodigoReserva.getText()));
+        lblValorPagar.setText("$"+String.valueOf(grupo.calcularCosto()));
+        lblValorPagar.setVisible(true);
         hotel.getGrupos().add(grupo);
         modelo.addElement(grupo.toStringForList());      
     }//GEN-LAST:event_btnGuardarGrupoActionPerformed
@@ -3255,6 +3269,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipoH308;
     private javax.swing.JLabel lblTipoH309;
     private javax.swing.JLabel lblTipoH310;
+    private javax.swing.JLabel lblTotalPagar;
+    private javax.swing.JLabel lblValorPagar;
     private javax.swing.JList<String> lstListaGrupos;
     private javax.swing.JPanel pnlH101;
     private javax.swing.JPanel pnlH102;
