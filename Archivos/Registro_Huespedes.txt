@@ -1,3 +1,8 @@
 1;1;0;0;29/06/2023;1
 NOMBRE;APELLIDOS;3000000000;Tarjeta de Identidad;0000000000;0;Masculino;Colombia;CIUDAD RES
 
+
+1;1;0;0;29/06/2023;2
+yyyy;yyyy;5454;Tarjeta de Identidad;5445;40;Masculino;Colombia;yhy
+
+

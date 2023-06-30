@@ -300,15 +300,50 @@ public class VentanaRegistrarHabitacion extends javax.swing.JFrame {
 
     private void btnGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarHabitacionActionPerformed
         int contiene=0;
+        Grupo gr=null;
         for(Grupo g:hotel.getGrupos()){
             if(Integer.parseInt(ftxtCodigoReserva.getText())==g.getCodigo()){
                 contiene=1;
+                gr=(Grupo)g;
+                break;
             }
         }
+        
         if(contiene==0){
-            JOptionPane.showMessageDialog(this, "El grupo ingresado no existe en los registros","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El grupo ingresado no existe en los registros","ERROR GRUPO INEXISTENTE",JOptionPane.ERROR_MESSAGE);
+            btnGuardarHabitacion.setVisible(false);
+            btnRegistrarGrupo.setVisible(true);
+            btnVaciarHabitacion.setVisible(false);
+            lblCodigoReserva.setVisible(false);
+            ftxtCodigoReserva.setVisible(false);
             return;
         }
+        
+        if(gr.getCH(lblTipoH.getText())==0){
+            if(gr.getH(lblTipoH.getText())==0){
+                JOptionPane.showMessageDialog(this, "El grupo ingresado no ha reservado habitaciones de este tipo","ERROR TIPO HABITACION",JOptionPane.ERROR_MESSAGE);
+                btnGuardarHabitacion.setVisible(false);
+                btnRegistrarGrupo.setVisible(true);
+                btnVaciarHabitacion.setVisible(false);
+                lblCodigoReserva.setVisible(false);
+                ftxtCodigoReserva.setVisible(false);
+                return;  
+            }
+            else if(gr.getH(lblTipoH.getText())>0){
+                JOptionPane.showMessageDialog(this, "Al grupo ya se le han asignado el numero de habitaciones registradas de este tipo","ERROR TODAS LAS HABITACIONES DE UN TIPO DEL GRUPO FUERON YA ASIGNADAS",JOptionPane.ERROR_MESSAGE);
+                btnGuardarHabitacion.setVisible(false);
+                btnRegistrarGrupo.setVisible(true);
+                btnVaciarHabitacion.setVisible(false);
+                lblCodigoReserva.setVisible(false);
+                ftxtCodigoReserva.setVisible(false);
+                return;
+            }
+        }
+        else if(gr.getCH(lblTipoH.getText())>0){
+            gr.setCH(lblTipoH.getText());
+            
+        }
+        
         hotel.getHabitaciones().put(Integer.parseInt(lblNumH.getText()),new Habitacion("Ocupado",Integer.parseInt(ftxtCodigoReserva.getText()),lblTipoH.getText()));
         Habitacion ha=(Habitacion)hotel.getHabitaciones().get(Integer.parseInt(lblNumH.getText()));
         btnVaciarHabitacion.setVisible(true);
@@ -336,6 +371,11 @@ public class VentanaRegistrarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVaciarHabitacionActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        btnGuardarHabitacion.setVisible(false);
+        btnRegistrarGrupo.setVisible(true);
+        btnVaciarHabitacion.setVisible(false);
+        lblCodigoReserva.setVisible(false);
+        ftxtCodigoReserva.setVisible(false);
         Habitacion h=(Habitacion)hotel.getHabitaciones().get(Integer.parseInt(lblNumH.getText()));
         ventanamain.getBoton(lblNumH.getText()).setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){

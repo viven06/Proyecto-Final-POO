@@ -428,8 +428,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardarGrupo)
                             .addComponent(lblLista)
-                            .addComponent(btnNuevoGrupo)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnNuevoGrupo)))
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -458,8 +457,11 @@ public class Ventana extends javax.swing.JFrame {
                                 .addGap(129, 129, 129)
                                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(ftxtDiasPermanencia, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(74, 74, 74)
+                                    .addComponent(ftxtFechaAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(pnlRegistrarLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46)
                 .addComponent(sptSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistrarLayout.createSequentialGroup()
@@ -2391,11 +2393,11 @@ public class Ventana extends javax.swing.JFrame {
         btnGuardarHuesped.setVisible(false);
         btnFinalizarRegistro.setVisible(false);
         sptSeparador.setVisible(false);
+        lblTotalPagar.setVisible(false);
+        lblValorPagar.setVisible(false);
               
-        grupo.mostrarHuespedes();
-      
         LecturaEscritura le=new LecturaEscritura();
-        le.escribirProductos(grupo.getHuespedes(),grupo);
+        le.escribirProductos(ventanahabitacion.getHotel().getGrupos());
         
         
     }//GEN-LAST:event_btnFinalizarRegistroActionPerformed
@@ -2425,6 +2427,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(101);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         if(h.getEstado().equals("Disponible")){
             ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
@@ -2468,6 +2472,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(102);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         if(h.getEstado().equals("Disponible")){
             ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
@@ -2490,6 +2496,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(107);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         if(h.getEstado().equals("Disponible")){
             ventanahabitacion.getbtnVaciarHabitacion().setVisible(false);
@@ -2512,6 +2520,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(203);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH203.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2534,6 +2544,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(209);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH209.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2556,6 +2568,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(108);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH108.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2578,6 +2592,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(109);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH109.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2600,6 +2616,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("350000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(110);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH110.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2622,6 +2640,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(201);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH201.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2644,6 +2664,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(204);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH204.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2666,6 +2688,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(202);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH202.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2688,6 +2712,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(205);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH205.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2710,6 +2736,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(206);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH206.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2732,6 +2760,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(207);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH207.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2754,6 +2784,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(208);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH208.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2776,6 +2808,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("350000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(210);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH210.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2798,6 +2832,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(301);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH301.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2820,6 +2856,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(302);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH302.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2842,6 +2880,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(303);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH303.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2864,6 +2904,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(304);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH304.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2886,6 +2928,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(305);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH305.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2908,6 +2952,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(306);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH306.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2930,6 +2976,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(308);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH308.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2952,6 +3000,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(307);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH307.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2974,6 +3024,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(309);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH309.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -2996,6 +3048,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("350000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(310);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH310.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -3018,6 +3072,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(103);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH103.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -3040,6 +3096,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(104);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH104.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -3062,6 +3120,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("100000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(105);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH105.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){
@@ -3084,6 +3144,8 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(h.getEstado()+"e");
         ventanahabitacion.getlblEstado().setText(h.getEstado());
         ventanahabitacion.getlblPrecioN().setText("200000");
+        Habitacion ha=(Habitacion)ventanahabitacion.getHotel().getHabitaciones().get(106);
+        ventanahabitacion.getlblgr().setText(String.valueOf(ha.getGrupo()));
         ventanahabitacion.setVisible(true); 
         btnH106.setText(h.getEstado());
         if(h.getEstado().equals("Disponible")){

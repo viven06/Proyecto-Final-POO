@@ -25,18 +25,7 @@ public class Huesped {
         this.ciudadResidencia=ciures;
     }
     
-    public void mostrarHuesped(){
-        System.out.println(" ");
-        System.out.println("Nombre: "+nombre);
-        System.out.println("Apellidos: "+apellido);
-        System.out.println("Telefono: "+telefono);
-        System.out.println("Tipo Documento de Identidad: "+tipoDocu);
-        System.out.println("Numero Documento de Identidad: "+numeroDocu);
-        System.out.println("Edad: "+edad);
-        System.out.println("Genero: "+genero);
-        System.out.println("Nacionalidad: "+nacionalidad);
-        System.out.println("Ciudad de Residencia: "+ciudadResidencia);
-    }
+    
     
     @Override
     public String toString(){
