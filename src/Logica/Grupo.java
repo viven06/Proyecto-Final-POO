@@ -88,7 +88,7 @@ public class Grupo {
     }
     
     public String toString(){
-        return dias_permanencia+";"+hSencilla+";"+hDoble+";"+hSuite+";"+fechaAlojamiento+";"+codigo;
+        return "FECHA ALOJAMIENTO: "+fechaAlojamiento+" | DÍAS DE PERMANENCIA: "+dias_permanencia+" | H SENCILLAS: "+hSencilla+" | H DOBLES: "+hDoble+" | H SUITES: "+hSuite+" | CODIGO RESERVA: "+codigo;
     }
     
     public String toStringForList(){

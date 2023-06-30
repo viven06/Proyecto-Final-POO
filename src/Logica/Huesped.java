@@ -29,6 +29,6 @@ public class Huesped {
     
     @Override
     public String toString(){
-        return nombre+";"+apellido+";"+telefono+";"+tipoDocu+";"+numeroDocu+";"+edad+";"+genero+";"+nacionalidad+";"+ciudadResidencia;
+        return "NOMBRE: "+nombre+" | APELLIDO: "+apellido+" | TELEFONO: "+telefono+" | TIPO DOCUMENTO: "+tipoDocu+" | NUMERO DOCUMENTO: "+numeroDocu+" | EDAD: "+edad+" | GENERO: "+genero+" | NACIONALIDAD: "+nacionalidad+" | CIUDAD DE RESIDENCIA: "+ciudadResidencia;
     }
 }

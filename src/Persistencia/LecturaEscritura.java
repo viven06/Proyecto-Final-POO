@@ -17,7 +17,7 @@ public class LecturaEscritura {
                 for(Huesped h:g.getHuespedes()){
                     writer.write(h.toString()+"\n");
                 }
-                writer.write("\n"+"\n");
+                writer.write("\n");
             }
             writer.close();
             
