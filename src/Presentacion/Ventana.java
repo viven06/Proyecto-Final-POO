@@ -276,38 +276,18 @@ public class Ventana extends javax.swing.JFrame {
 
         ftxtCantidadDobles.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadDobles.setMinimumSize(new java.awt.Dimension(64, 26));
-        ftxtCantidadDobles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtCantidadDoblesActionPerformed(evt);
-            }
-        });
 
         ftxtCantidadSencillas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadSencillas.setMinimumSize(new java.awt.Dimension(64, 26));
-        ftxtCantidadSencillas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtCantidadSencillasActionPerformed(evt);
-            }
-        });
 
         ftxtDiasPermanencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtDiasPermanencia.setMinimumSize(new java.awt.Dimension(64, 26));
 
         ftxtCantidadSuites.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCantidadSuites.setMinimumSize(new java.awt.Dimension(64, 26));
-        ftxtCantidadSuites.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtCantidadSuitesActionPerformed(evt);
-            }
-        });
 
         ftxtCodigoReserva.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ftxtCodigoReserva.setMinimumSize(new java.awt.Dimension(64, 26));
-        ftxtCodigoReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtCodigoReservaActionPerformed(evt);
-            }
-        });
 
         btnNuevoHuesped.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnNuevoHuesped.setText("Nuevo Huesped");
@@ -2401,22 +2381,6 @@ public class Ventana extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnFinalizarRegistroActionPerformed
-
-    private void ftxtCodigoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCodigoReservaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtCodigoReservaActionPerformed
-
-    private void ftxtCantidadSencillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadSencillasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtCantidadSencillasActionPerformed
-
-    private void ftxtCantidadDoblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadDoblesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtCantidadDoblesActionPerformed
-
-    private void ftxtCantidadSuitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCantidadSuitesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtCantidadSuitesActionPerformed
 
     
     private void btnH101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH101ActionPerformed

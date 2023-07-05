@@ -409,9 +409,6 @@
                   <Dimension value="[64, 26]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ftxtCantidadDoblesActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ftxtCantidadDobles.setVisible(false);"/>
               </AuxValues>
@@ -425,9 +422,6 @@
                   <Dimension value="[64, 26]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ftxtCantidadSencillasActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ftxtCantidadSencillas.setVisible(false);"/>
               </AuxValues>
@@ -454,9 +448,6 @@
                   <Dimension value="[64, 26]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ftxtCantidadSuitesActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ftxtCantidadSuites.setVisible(false);"/>
               </AuxValues>
@@ -470,9 +461,6 @@
                   <Dimension value="[64, 26]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ftxtCodigoReservaActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ftxtCodigoReserva.setVisible(false);"/>
               </AuxValues>
